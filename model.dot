@@ -2,9 +2,9 @@ digraph G
 {
 	graph [rankdir=LR] 
 	node [shape=box] 
-    Organization -> Role [arrowhead=crow label="有"]
-    Role -> User [arrowhead=crow label="属于"]
-    User-> Role [arrowhead=crow label="担任"]
+    Organization -> Position [arrowhead=crow label="有"]
+    Position -> User [arrowhead=crow label="属于"]
+    User-> Position [arrowhead=crow label="担任"]
     Organization -> User[arrowhead=crow label="拥有"]
     User->Organization [arrowhead=crow label="属于"]
     Organization -> Organization [arrowhead=crow label="包含"] 
