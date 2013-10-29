@@ -11,10 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131007122202) do
+ActiveRecord::Schema.define(version: 20131020140658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "organization_posts", force: true do |t|
+    t.string   "type"
+    t.integer  "organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "organizations", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "type"
+    t.integer  "parent_id"
+  end
+
+  add_index "organizations", ["name"], name: "organizations_unique_name", unique: true, using: :btree
+
+  create_table "user_organization_posts", id: false, force: true do |t|
+    t.integer  "organization_post_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_organization_posts", ["user_id", "organization_post_id"], name: "user_organization_posts_unique", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
