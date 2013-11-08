@@ -14,8 +14,7 @@ digraph G
 
     Template -> CheckPoint[arrowtail=teetee arrowhead=crowodot dir="both"]
 
-    QuickReport->QuickReportItem[arrowtail=teetee  arrowhead=crow dir="both"]
-    QuickReportItem->QuickReportItemResolve[arrowtail=teetee arrowhead=crowodot dir="both"]
+    QuickReport->QuickReportResolve[arrowtail=teetee arrowhead=crowodot dir="both"]
 
     TemplateReport 		-> TemplateReportItem[arrowtail=teetee arrowhead=crowodot dir="both"]
     TemplateReportItem  -> TemplateReportItemResolve[arrowtail=teetee arrowhead=crowodot dir="both"]
