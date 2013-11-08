@@ -2,10 +2,24 @@ digraph G
 {
 	graph [rankdir=LR] 
 	node [shape=box] 
-    Organization -> Post [arrowhead=crow label="有"]
-    Post -> User [arrowhead=crow label="属于"]
-    User-> Post [arrowhead=crow label="担任"]
-    Organization -> User[arrowhead=crow label="拥有"]
-    User->Organization [arrowhead=crow label="属于"]
-    Organization -> Organization [arrowhead=crow label="包含"] 
+    #Organization -> Post [arrowhead=crow label="有"]
+    #Post -> User [arrowhead=crow label="属于"]
+    #User-> Post [arrowhead=crow label="担任"]
+    #Organization -> User[arrowhead=crow label="拥有"]
+    #User->Organization [arrowhead=crow label="属于"]
+
+    Organization -> OrganizationPost[arrowtail=teetee arrowhead=crowtee dir="both"]
+    Organization -> Organization 	[arrowtail=crowodot arrowhead=crowodot dir="both"] 
+    User  		 -> OrganizationPost[arrowtail=crowodot arrowhead=crowtee dir="both"]
+
+    Template -> CheckPoint[arrowtail=teetee arrowhead=crowodot dir="both"]
+
+    QuickReport->QuickReportItem[arrowtail=teetee  arrowhead=crow dir="both"]
+    QuickReportItem->QuickReportItemResolve[arrowtail=teetee arrowhead=crowodot dir="both"]
+
+    TemplateReport 		-> TemplateReportItem[arrowtail=teetee arrowhead=crowodot dir="both"]
+    TemplateReportItem  -> TemplateReportItemResolve[arrowtail=teetee arrowhead=crowodot dir="both"]
+    Template 			-> TemplateReport[arrowtail=teetee arrowhead=crowodot dir="both"]
+    TemplateReportItem 	-> CheckPoint[arrowtail=crowodot arrowhead=teetee dir="both"]
+
 }
