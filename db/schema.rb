@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131124075424) do
+ActiveRecord::Schema.define(version: 20131130064604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "check_images", force: true do |t|
+    t.string   "name"
+    t.string   "orignial_name"
+    t.string   "discriminator"
+    t.integer  "quick_report_id"
+    t.integer  "department_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "organization_posts", force: true do |t|
     t.string   "type"
@@ -32,6 +42,19 @@ ActiveRecord::Schema.define(version: 20131124075424) do
   end
 
   add_index "organizations", ["name"], name: "organizations_unique_name", unique: true, using: :btree
+
+  create_table "quick_reports", force: true do |t|
+    t.integer  "department_id"
+    t.integer  "submitter_id"
+    t.integer  "responsible_person_id"
+    t.integer  "organization_id"
+    t.string   "level"
+    t.text     "description"
+    t.string   "state"
+    t.datetime "dead_line"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "units", force: true do |t|
     t.string   "name"
