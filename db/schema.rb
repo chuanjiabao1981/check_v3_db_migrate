@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131209144818) do
+ActiveRecord::Schema.define(version: 20131224075357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 20131209144818) do
     t.datetime "dead_line"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "version",               default: 0
+    t.integer  "resolve_num",           default: 0
   end
 
   create_table "resolves", force: true do |t|
