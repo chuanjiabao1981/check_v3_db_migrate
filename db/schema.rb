@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131228070412) do
+ActiveRecord::Schema.define(version: 20140113131244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20131228070412) do
     t.datetime "updated_at"
     t.integer  "submitter_id"
     t.integer  "resolve_id"
+    t.integer  "template_report_item_id"
   end
 
   create_table "check_points", force: true do |t|
@@ -88,6 +89,32 @@ ActiveRecord::Schema.define(version: 20131228070412) do
     t.integer  "quick_report_id"
     t.integer  "department_id"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "template_report_item_id"
+  end
+
+  create_table "template_report_items", force: true do |t|
+    t.integer  "organization_id"
+    t.integer  "template_id"
+    t.integer  "department_id"
+    t.integer  "template_report_id"
+    t.integer  "check_point_id"
+    t.integer  "submitter_id"
+    t.boolean  "has_problem"
+    t.string   "description"
+    t.string   "level"
+    t.string   "state"
+    t.datetime "dead_line"
+    t.integer  "resolve_num",        default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "template_reports", force: true do |t|
+    t.integer  "organization_id"
+    t.integer  "template_id"
+    t.integer  "department_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
